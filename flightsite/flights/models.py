@@ -9,14 +9,16 @@ class Flight(models.Model):
     airline = models.CharField(max_length=50)
     
     # Cabin field includes choices
-    F = 'Frst'
-    Y = 'Ecnmy'
-    cabin_choices = (
-        (F, 'First Class'),
-        (Y,'Economy'))
+    cabin_choices = (('Cabin', (
+                        ('first', 'First Class'),
+                        ('business', 'Business Class'),
+                        ('economy plus', 'Economy Plus Class'),
+                        ('economy', 'Economy Class'),
+                      )))
     cabin = models.CharField(max_length=20,
-                            choices = cabin_choices,
-                            default = Y)
+                            choices = cabin_choices[1],
+                            default = cabin_choices[1][3]
+                            )
     
     equipment = models.CharField(max_length=50)
     miles_redemption = models.BooleanField()
