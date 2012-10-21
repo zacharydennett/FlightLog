@@ -19,13 +19,12 @@ class Flight(models.Model):
                             choices = cabin_choices[1],
                             default = cabin_choices[1][3]
                             )
-    
     equipment = models.CharField(max_length=50)
     miles_redemption = models.BooleanField()
-
     def __unicode__(self):
         return self.origin + "-" + self.destination + " " + str(self.flight_date.month) + "/" +str(self.flight_date.day) +"/" + str(self.flight_date.year)
 
 
-## To do, make equipment a choosable field https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.choices
-
+# This table is createds to define the choices of aircraft
+class Aircraftlist(models.Model):
+    aircraft_names = models.CharField(max_length=3)
