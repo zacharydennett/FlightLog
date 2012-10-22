@@ -21,9 +21,7 @@ class Flight(models.Model):
                             default = cabin_choices[1][3]
                             )
     
-    # Equipment (i.e. Aircraft type) include a choice based on the items in the Aircraft_list table
-    aircraft_choices = models.ForeignKey('Aircraft_list')
-    equipment = models.CharField(max_length=50)
+    aircraft = models.ForeignKey('Aircraft_list')
     miles_redemption = models.BooleanField()
     def __unicode__(self):
         return self.origin + "-" + self.destination + " " + str(self.flight_date.month) + "/" +str(self.flight_date.day) +"/" + str(self.flight_date.year)
@@ -35,3 +33,7 @@ class Aircraft_list(models.Model):
     ## aircraft_display_name = models.CharField(max_length=30)
     def __unicode__(self):
         return self.aircraft_name
+
+class Airport_list(models.Model):
+    airport_code = models.CharField(max_length=3)
+    
