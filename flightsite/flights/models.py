@@ -30,10 +30,18 @@ class Flight(models.Model):
 # This table is createds to define the choices of aircraft
 class Aircraft_list(models.Model):
     aircraft_name = models.CharField(max_length=30)
-    ## aircraft_display_name = models.CharField(max_length=30)
     def __unicode__(self):
         return self.aircraft_name
 
 class Airport_list(models.Model):
     airport_code = models.CharField(max_length=3)
+    airport_name = models.CharField(max_length=100)
+    def __unicode__(self):
+        return self.airport_code + "-" + self.airport_name
+
+class Airline_list(models.Model):
+    airline_name = models.CharField(max_length=100)
+    airline_code = models.CharField(max_length=10)
+    def __unicode__(self):
+        return self.airline_code + "-" + self.airline_name
     
