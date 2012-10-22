@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Flight module holds flight level information
 class Flight(models.Model):
     origin = models.CharField(max_length=3)
@@ -19,6 +20,9 @@ class Flight(models.Model):
                             choices = cabin_choices[1],
                             default = cabin_choices[1][3]
                             )
+    
+    # Equipment (i.e. Aircraft type) include a choice based on the items in the Aircraft_list table
+    aircraft_choices = models.ForeignKey('Aircraft_list')
     equipment = models.CharField(max_length=50)
     miles_redemption = models.BooleanField()
     def __unicode__(self):
@@ -26,5 +30,8 @@ class Flight(models.Model):
 
 
 # This table is createds to define the choices of aircraft
-class Aircraftlist(models.Model):
-    aircraft_names = models.CharField(max_length=3)
+class Aircraft_list(models.Model):
+    aircraft_name = models.CharField(max_length=30)
+    ## aircraft_display_name = models.CharField(max_length=30)
+    def __unicode__(self):
+        return self.aircraft_name
