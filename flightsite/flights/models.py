@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Airport_origin_list(models.Model):
+class Airport_list(models.Model):
     airport_code = models.CharField(max_length=3)
     airport_name = models.CharField(max_length=100)
     longitude = models.FloatField()
@@ -13,8 +13,8 @@ class Airport_origin_list(models.Model):
 
 # Flight module holds flight level information
 class Flight(models.Model):
-    origin = models.ForeignKey(Airport_origin_list, related_name = "origin_key")
-    destination = models.ForeignKey(Airport_origin_list, related_name = "destination_key")
+    origin = models.ForeignKey(Airport_list, related_name = "origin_key")
+    destination = models.ForeignKey(Airport_list, related_name = "destination_key")
     flight_date = models.DateField('flight date')
     airline = models.ForeignKey('Airline_list')
     
