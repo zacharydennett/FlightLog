@@ -13,8 +13,8 @@ class Airport_origin_list(models.Model):
 
 # Flight module holds flight level information
 class Flight(models.Model):
-    origin = models.ForeignKey(Airport_origin_list)
-    destination = models.CharField(max_length=10)
+    origin = models.ForeignKey(Airport_origin_list, related_name = "origin_key")
+    destination = models.ForeignKey(Airport_origin_list, related_name = "destination_key")
     flight_date = models.DateField('flight date')
     airline = models.ForeignKey('Airline_list')
     
@@ -34,7 +34,7 @@ class Flight(models.Model):
     def __unicode__(self):
         return str(self.origin) + "-" + str(self.destination) + " " + str(self.flight_date.month) + "/" +str(self.flight_date.day) +"/" + str(self.flight_date.year)
     def flight_distance(self):
-        return self.origin.longitude ## TO DO make this actually calculate distance!
+        return self.origin.longitude + self.destination.longitude ## TO DO make this actually calculate distance!
 
 # This table is createds to define the choices of aircraft
 class Aircraft_list(models.Model):
