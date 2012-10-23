@@ -34,6 +34,7 @@ class Flight(models.Model):
 
 class Aircraft_list(models.Model):
     aircraft_name = models.CharField(max_length=30)
+    manufacturer =models.CharField(max_length = 100)
     def __unicode__(self):
         return self.aircraft_name
     class Meta:
