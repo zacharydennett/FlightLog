@@ -1,4 +1,13 @@
 ## Shell commands to load lists
 python manage.py shell
+from flights.models import Aircraft_list
 import __datafill as d
-d.add_aircraft('787','Boeing')
+d.add_aircraft()
+Aircraft_list.objects.all()
+
+ALTERNATELY
+python manage.py shell
+import flights.models
+import __datafill as d
+d.add_aircraft()
+flights.models.Aircraft_list.objects.all()
