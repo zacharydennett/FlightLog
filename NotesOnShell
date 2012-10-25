@@ -26,3 +26,7 @@ flights.models.Aircraft_list.objects.all()
 
 a = Airport_list.objects.filter(airport_code = 'BFI')
 a = Airport_list.objects.get(airport_code = 'BFI')
+
+from flights.greatcircle import distance
+from flights.models import Flight
+a = Flight.objects.get(pk=1)

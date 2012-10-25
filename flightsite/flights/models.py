@@ -1,5 +1,5 @@
 from django.db import models
-from flights.greatcicle import distance
+from flights.greatcircle import distance
 import math
 
 class Airport_list(models.Model):
@@ -50,7 +50,22 @@ class Flight(models.Model):
     miles_redemption = models.BooleanField()
     def __unicode__(self):
         return str(self.origin) + "-" + str(self.destination) + " " + str(self.flight_date.month) + "/" +str(self.flight_date.day) +"/" + str(self.flight_date.year)
+    def distance(self):
+        # Calculated the great cirlce distance. Based on code found here: http://www.platoscave.net/blog/2009/oct/5/calculate-distance-latitude-longitude-python/
+        lat1 = self.origin.latitude()
+        lon1 = self.origin.longitude()
+        lat2 = self.destination.latitude()
+        lon2 = self.destination.longitude()
+        radius = 3958.76 #miles
+    
+        dlat = math.radians(lat2-lat1)
+        dlon = math.radians(lon2-lon1)
+        a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
+            * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
+        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+        d = radius * c
 
+        return d
     #return self.origin.longitude + self.destination.longitude ## TO DO make this actually calculate distance!
 
 

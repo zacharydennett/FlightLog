@@ -3,6 +3,7 @@
 import math
 
 def distance(lat1, lon1, lat2, lon2):
+    # Calculates a great ciricle distance
     #radius = 6371 # km
     radius = 3958.76 #miles
     
