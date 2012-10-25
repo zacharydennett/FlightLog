@@ -12,7 +12,7 @@ d.add_airline()
 Airline_list.objects.all()
 
 ## Add Airports
-from flights.models import Airport_list
+ex
 import __datafill as d
 d.add_airport()
 
@@ -22,3 +22,6 @@ import flights.models
 import __datafill as d
 d.add_aircraft()
 flights.models.Aircraft_list.objects.all()
+
+
+a = Airport_list.objects.filter(airport_code = 'BFI')

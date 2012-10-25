@@ -15,6 +15,12 @@ class Airport_list(models.Model):
     lat_ew = models.CharField(max_length = 1)
     def __unicode__(self):
         return self.airport_code
+    def longitude(self):
+        if self.long_ns == "N":
+            r = 1.00 * self.long_deg + self.long_min / 60.0 + self.long_sec / (60.0 * 60.0)
+        else:
+            r = -1.00 * self.long_deg + self.long_min / 60.0 + self.long_sec / (60.0 * 60.0)
+        return r
     class Meta:
         ordering = ('airport_code',)
 
