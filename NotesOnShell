@@ -17,3 +17,8 @@ from flights.models import Airline_list
 import __datafill as d
 d.add_airline()
 Airline_list.objects.all()
+
+## Add Airports
+from flights.models import Airport_list
+import __datafill as d
+d.add_airport()

@@ -13,7 +13,6 @@ class Airport_list(models.Model):
     lat_min = models.IntegerField()
     lat_sec = models.IntegerField()
     lat_ew = models.CharField(max_length = 1)
-    latitude = models.FloatField()
     def __unicode__(self):
         return self.airport_code + "-" + self.airport_name
     class Meta:
