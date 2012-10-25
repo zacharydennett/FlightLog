@@ -2,10 +2,9 @@
 
 import math
 
-def distance(origin, destination):
-    lat1, lon1 = origin
-    lat2, lon2 = destination
-    radius = 6371 # km
+def distance(lat1, lon1, lat2, lon2):
+    #radius = 6371 # km
+    radius = 3958.76 #miles
     
     dlat = math.radians(lat2-lat1)
     dlon = math.radians(lon2-lon1)

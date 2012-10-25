@@ -1,4 +1,6 @@
 from django.db import models
+from flights.greatcicle import distance
+import math
 
 class Airport_list(models.Model):
     airport_code = models.CharField(max_length=3)
@@ -26,7 +28,7 @@ class Airport_list(models.Model):
                 r = 1.00 * self.lat_deg + self.lat_min / 60.0 + self.lat_sec / (60.0 * 60.0)
         else:
                 r = -1.00 * (self.lat_deg + self.lat_min / 60.0 + self.lat_sec / (60.0 * 60.0))
-        return r
+        return r  
     class Meta:
         ordering = ('airport_code',)
 
@@ -48,8 +50,8 @@ class Flight(models.Model):
     miles_redemption = models.BooleanField()
     def __unicode__(self):
         return str(self.origin) + "-" + str(self.destination) + " " + str(self.flight_date.month) + "/" +str(self.flight_date.day) +"/" + str(self.flight_date.year)
-    def flight_distance(self):
-        return self.origin.longitude + self.destination.longitude ## TO DO make this actually calculate distance!
+
+    #return self.origin.longitude + self.destination.longitude ## TO DO make this actually calculate distance!
 
 
 class Aircraft_list(models.Model):
