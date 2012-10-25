@@ -1,4 +1,5 @@
 from flights.models import Aircraft_list
+from flights.models import Airline_list
 
 def add_aircraft():
     a = Aircraft_list(aircraft_name = '737', manufacturer = 'Beoing')
@@ -26,9 +27,9 @@ def add_aircraft():
     a = Aircraft_list(aircraft_name = 'A380', manufacturer = 'Airbus')
     a.save()
 
-#print plane
-#a = models.Aircraft_list(aircraft_name = plane, amnf)
-#a.save
 
-
-# add_aircraft('777', 'Boeing')
+def add_airline():
+    Airline_list(airline_code = 'AA', airline_name = 'American Airlines', airline_country = 'United States').save()
+    Airline_list(airline_code = 'DL', airline_name = 'Delta Airlines', airline_country = 'United States').save()
+    Airline_list(airline_code = 'UA', airline_name = 'United Airlines', airline_country = 'United States').save()
+    Airline_list(airline_code = 'WN', airline_name = 'Southwest Airlines', airline_country = 'United States').save()

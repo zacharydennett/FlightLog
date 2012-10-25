@@ -2,8 +2,17 @@ from django.db import models
 
 class Airport_list(models.Model):
     airport_code = models.CharField(max_length=3)
-    airport_name = models.CharField(max_length=100)
-    longitude = models.FloatField()
+    airport_name = models.CharField(max_length=200)
+    country = models.CharField(max_length = 100)
+    US_state = models.CharField(blank=True, max_length=100)
+    long_deg = models.IntegerField()
+    long_min = models.IntegerField()
+    long_sec = models.IntegerField()
+    long_ns = models.CharField(max_length = 1)
+    lat_deg = models.IntegerField()
+    lat_min = models.IntegerField()
+    lat_sec = models.IntegerField()
+    lat_ew = models.CharField(max_length = 1)
     latitude = models.FloatField()
     def __unicode__(self):
         return self.airport_code + "-" + self.airport_name
@@ -42,8 +51,9 @@ class Aircraft_list(models.Model):
 
 
 class Airline_list(models.Model):
-    airline_name = models.CharField(max_length=100)
     airline_code = models.CharField(max_length=10)
+    airline_name = models.CharField(max_length=100)
+    airline_country = models.CharField(max_length=100)
     def __unicode__(self):
         return self.airline_code + "-" + self.airline_name
     class Meta:
