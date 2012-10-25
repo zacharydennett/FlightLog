@@ -49,7 +49,7 @@ class Flight(models.Model):
     aircraft = models.ForeignKey('Aircraft_list')
     miles_redemption = models.BooleanField()
     def __unicode__(self):
-        return str(self.origin) + "-" + str(self.destination) + " " + str(self.flight_date.month) + "/" +str(self.flight_date.day) +"/" + str(self.flight_date.year)
+        return str(self.origin) + "-" + str(self.destination) + " " + str(self.flight_date.month) + "/" +str(self.flight_date.day) +"/" + str(self.flight_date.year) + " " + str(round(self.distance(),1)) + "miles"
     def distance(self):
         # Calculated the great cirlce distance. Based on code found here: http://www.platoscave.net/blog/2009/oct/5/calculate-distance-latitude-longitude-python/
         lat1 = self.origin.latitude()
