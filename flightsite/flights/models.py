@@ -19,13 +19,13 @@ class Airport_list(models.Model):
         if self.long_ew == "E":
             r = 1.00 * self.long_deg + self.long_min / 60.0 + self.long_sec / (60.0 * 60.0)
         else:
-            r = -1.00 * self.long_deg + self.long_min / 60.0 + self.long_sec / (60.0 * 60.0)
+            r = -1.00 * (self.long_deg + self.long_min / 60.0 + self.long_sec / (60.0 * 60.0))
         return r
     def latitude(self):
         if self.lat_ns == "N":
                 r = 1.00 * self.lat_deg + self.lat_min / 60.0 + self.lat_sec / (60.0 * 60.0)
         else:
-                r = -1.00 * self.lat_deg + self.lat_min / 60.0 + self.lat_sec / (60.0 * 60.0)
+                r = -1.00 * (self.lat_deg + self.lat_min / 60.0 + self.lat_sec / (60.0 * 60.0))
         return r
     class Meta:
         ordering = ('airport_code',)
