@@ -14,7 +14,7 @@ class Airport_list(models.Model):
     lat_sec = models.IntegerField()
     lat_ew = models.CharField(max_length = 1)
     def __unicode__(self):
-        return self.airport_code + "-" + self.airport_name
+        return self.airport_code
     class Meta:
         ordering = ('airport_code',)
 
