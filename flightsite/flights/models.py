@@ -8,18 +8,24 @@ class Airport_list(models.Model):
     long_deg = models.IntegerField()
     long_min = models.IntegerField()
     long_sec = models.IntegerField()
-    long_ns = models.CharField(max_length = 1)
+    long_ew = models.CharField(max_length = 1)
     lat_deg = models.IntegerField()
     lat_min = models.IntegerField()
     lat_sec = models.IntegerField()
-    lat_ew = models.CharField(max_length = 1)
+    lat_ns = models.CharField(max_length = 1)
     def __unicode__(self):
         return self.airport_code
     def longitude(self):
-        if self.long_ns == "N":
+        if self.long_ew == "E":
             r = 1.00 * self.long_deg + self.long_min / 60.0 + self.long_sec / (60.0 * 60.0)
         else:
             r = -1.00 * self.long_deg + self.long_min / 60.0 + self.long_sec / (60.0 * 60.0)
+        return r
+    def latitude(self):
+            if self.lat_ns == "N":
+                r = 1.00 * self.lat_deg + self.lat_min / 60.0 + self.lat_sec / (60.0 * 60.0)
+        else:
+                r = -1.00 * self.lat_deg + self.lat_min / 60.0 + self.lat_sec / (60.0 * 60.0)
         return r
     class Meta:
         ordering = ('airport_code',)
