@@ -8,7 +8,7 @@
 <h2>Here are your last flights</h2>
 <ul>
     {% for flight in latest_flight_list %}
-    <li><a href="/flightss/{{ flight.id }}/">{{ flight.flight_date }} -- {{ flight.origin.airport_name }} -- {{ flight.destination.airport_name }}</a></li>
+    <li><a href="/flights/{{ flight.id }}/">{{ flight.flight_date }} -- {{ flight.origin.airport_name }} -- {{ flight.destination.airport_name }}</a></li>
     {% endfor %}
 </ul>
 <i>List limited to 50 flights </i>

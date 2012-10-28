@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 from flights.models import Flight
 from django.template import Context, loader
+from django.shortcuts import render, get_object_or_404
 
 
 def index(request):
@@ -15,5 +16,6 @@ def index(request):
 
 
 def detail(request, flight_id):
-    return HttpResponse("You're looking at flight %s." % flight_id)
+    flight = get_object_or_404(Flight, pk=flight_id)
+    return render(request, 'flights/detail.html', {'flight': flight})
 
