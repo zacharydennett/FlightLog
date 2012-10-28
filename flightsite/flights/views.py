@@ -19,3 +19,5 @@ def detail(request, flight_id):
     flight = get_object_or_404(Flight, pk=flight_id)
     return render(request, 'flights/detail.html', {'flight': flight})
 
+def newflight(request):
+    return HttpResponse("Hello, world. You're entering a new flight.")
