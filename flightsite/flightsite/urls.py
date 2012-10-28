@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
                        
+    # These views are used for the authentication
     url(r'^login/', 'flightsite.views.loginview'),
     url(r'^auth/', 'flightsite.views.auth_and_login'),
     url(r'^signup/', 'flightsite.views.sign_up_in'),
