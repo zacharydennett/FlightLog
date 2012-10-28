@@ -6,7 +6,7 @@ from django.template import Context, loader
 
 def index(request):
 #return HttpResponse("Hello World! This text comes from fligts/views index"):
-    latest_flight_list = Flight.objects.order_by('-flight_date')[:5]
+    latest_flight_list = Flight.objects.order_by('-flight_date')[:50]
     template = loader.get_template('flights/index.html')
     context = Context({
                       'latest_flight_list': latest_flight_list,
