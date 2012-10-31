@@ -1,9 +1,11 @@
-# Create your views here.
+
 from django.http import HttpResponse
 from flights.models import Flight
 from django.template import Context, loader
 from django.shortcuts import render, get_object_or_404
-from django.forms import ModelForm ## for the form stuff
+## for the form stuff
+from django.forms import ModelForm 
+from django.forms.models import modelformset_factory
 
 
 def index(request):
@@ -21,4 +23,15 @@ def detail(request, flight_id):
     return render(request, 'flights/detail.html', {'flight': flight})
 
 def newflight(request):
-    return HttpResponse("Hello, world. You're entering a new flight.")
+    FlightFormSet = modelformset_factory(Flight)
+    if request.method == 'POST':
+        formset = FlightFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            # do something.
+            return HttpResponse("IT WORKED!!!")
+    else:
+        formset = FlightFormSet()
+    return HttpResponse("FINAL COMMENT")
+
+
