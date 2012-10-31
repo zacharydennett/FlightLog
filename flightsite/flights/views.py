@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from flights.models import Flight
 from django.template import Context, loader
 from django.shortcuts import render, get_object_or_404
+from django.forms import ModelForm ## for the form stuff
 
 
 def index(request):

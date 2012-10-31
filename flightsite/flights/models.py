@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm # Needed for the form
 from flights.greatcircle import distance
 import math
 
@@ -86,4 +87,8 @@ class Airline_list(models.Model):
         return self.airline_code + "-" + self.airline_name
     class Meta:
         ordering = ('airline_name',)
+
+class FlightForm(ModelForm):
+    class Meta:
+        model = Flight
     
