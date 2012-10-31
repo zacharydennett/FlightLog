@@ -1,6 +1,6 @@
 
 from django.http import HttpResponse
-from flights.models import Flight
+from flights.models import Flight, FlightForm
 from django.template import Context, loader
 from django.shortcuts import render, get_object_or_404, render_to_response
 ## for the form stuff
@@ -23,6 +23,14 @@ def detail(request, flight_id):
     return render(request, 'flights/detail.html', {'flight': flight})
 
 def newflight(request):
+    f = FlightForm(request.POST)
+    return render_to_response("flights/newflightpage.html", {
+            "formset": f,
+    })
+# return HttpResponse('IT WORKED!!!')
+
+       
+"""
     FlightFormSet = modelformset_factory(Flight)
     if request.method == 'POST':
         formset = FlightFormSet(request.POST, request.FILES)
@@ -36,4 +44,4 @@ def newflight(request):
             "formset": formset,
     })
 
-
+"""
