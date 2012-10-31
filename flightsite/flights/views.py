@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from flights.models import Flight
 from django.template import Context, loader
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, render_to_response
 ## for the form stuff
 from django.forms import ModelForm 
 from django.forms.models import modelformset_factory
@@ -32,6 +32,8 @@ def newflight(request):
             return HttpResponse("IT WORKED!!!")
     else:
         formset = FlightFormSet()
-    return HttpResponse("FINAL COMMENT")
+    return render_to_response("flights/newflightpage.html", {
+            "formset": formset,
+    })
 
 
