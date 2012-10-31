@@ -1,4 +1,7 @@
 This text comes from the newflightpage.html
 <form method="post" action="">
-    {{ formset }}
+    {{ formset.management_form }}
+    {% for form in formset %}
+        <br> {{ form }}
+    {% endfor %}
 </form>
