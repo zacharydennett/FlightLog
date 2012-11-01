@@ -1,7 +1,8 @@
 This text comes from the newflightpage.html
-<form method="post" action="">
+<form method="post" action=""> {% csrf_token %}
     {{ formset.management_form }}
     {% for form in formset %}
         <br> {{ form }}
     {% endfor %}
+    <input type="submit" value="Submit" />
 </form>

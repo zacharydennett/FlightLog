@@ -27,21 +27,5 @@ def newflight(request):
     return render_to_response("flights/newflightpage.html", {
             "formset": f,
     })
-# return HttpResponse('IT WORKED!!!')
 
-       
-"""
-    FlightFormSet = modelformset_factory(Flight)
-    if request.method == 'POST':
-        formset = FlightFormSet(request.POST, request.FILES)
-        if formset.is_valid():
-            formset.save()
-            # do something.
-            return HttpResponse("IT WORKED!!!")
-    else:
-        formset = FlightFormSet()
-    return render_to_response("flights/newflightpage.html", {
-            "formset": formset,
-    })
 
-"""
